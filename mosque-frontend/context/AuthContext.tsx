@@ -19,6 +19,7 @@ interface AuthContextType {
     token: string | null;
     login: (token: string, userData: User) => void;
     logout: () => void;
+    updateUser: (userData: User) => void;
     loading: boolean;
 }
 
@@ -51,6 +52,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     }, [router]);
 
+    const updateUser = useCallback((userData: User) => {
+        localStorage.setItem('user', JSON.stringify(userData));
+        setUser(userData);
+    }, []);
+
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
         if (storedToken) {
@@ -77,7 +83,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }, [logout]);
 
     return (
-        <AuthContext.Provider value={{ user, token, login, logout, loading }}>
+        <AuthContext.Provider value={{ user, token, login, logout, updateUser, loading }}>
             {children}
         </AuthContext.Provider>
     );

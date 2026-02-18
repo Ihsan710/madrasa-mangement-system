@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ProfilePage() {
-    const { user, login } = useAuth();
+    const { user, updateUser } = useAuth();
     const [formData, setFormData] = useState({
         name: '',
         mobile: '',
@@ -29,6 +29,16 @@ export default function ProfilePage() {
         totalContributed: 0,
         memberSince: new Date().getFullYear()
     });
+
+    // Helper to construct image URL
+    const getImageUrl = (path: string) => {
+        if (!path) return null;
+        if (path.startsWith('http')) return path;
+
+        // Remove '/api' from the end of NEXT_PUBLIC_API_URL if it exists
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/api$/, '') || 'http://localhost:5000';
+        return `${baseUrl}${path}`;
+    };
 
     useEffect(() => {
         const fetchProfileData = async () => {
@@ -50,10 +60,7 @@ export default function ProfilePage() {
                 });
 
                 if (profileData.profilePhoto) {
-                    const photoUrl = profileData.profilePhoto.startsWith('http')
-                        ? profileData.profilePhoto
-                        : `http://localhost:5000${profileData.profilePhoto}`;
-                    setPreviewUrl(photoUrl);
+                    setPreviewUrl(getImageUrl(profileData.profilePhoto));
                 }
 
                 // Calculate Stats
@@ -119,18 +126,12 @@ export default function ProfilePage() {
             const updatedUser = await updateProfile(dataToUpdate);
 
             if (updatedUser.profilePhoto) {
-                const photoUrl = updatedUser.profilePhoto.startsWith('http')
-                    ? updatedUser.profilePhoto
-                    : `http://localhost:5000${updatedUser.profilePhoto}`;
-                setPreviewUrl(photoUrl);
+                setPreviewUrl(getImageUrl(updatedUser.profilePhoto));
             }
 
             if (user) {
                 const newUserData = { ...user, ...updatedUser };
-                const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-                if (token) {
-                    login(token, newUserData);
-                }
+                updateUser(newUserData); // No redirect
             }
 
             toast.success('Profile Updated Successfully');
