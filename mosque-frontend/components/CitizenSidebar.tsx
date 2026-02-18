@@ -33,13 +33,7 @@ export default function CitizenSidebar() {
                 </svg>
             )
         },
-        {
-            name: 'My Profile', path: '/citizen/profile', icon: (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-            )
-        },
+
     ];
 
     return (
@@ -54,8 +48,8 @@ export default function CitizenSidebar() {
                         <Link
                             href={item.path}
                             className={`p-3 rounded-xl transition-all duration-300 relative ${isActive(item.path)
-                                    ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-900/50 scale-110'
-                                    : 'text-emerald-300 hover:bg-emerald-800 hover:text-white'
+                                ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-900/50 scale-110'
+                                : 'text-emerald-300 hover:bg-emerald-800 hover:text-white'
                                 }`}
                         >
                             {item.icon}

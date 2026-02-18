@@ -73,14 +73,7 @@ export default function CitizenDashboard() {
                         </p>
                     </div>
 
-                    <div className="flex-shrink-0">
-                        <Link href="/citizen/profile" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-emerald-900 bg-emerald-100 hover:bg-white transition-all shadow-lg hover:shadow-emerald-900/20 transform hover:-translate-y-1">
-                            Review Profile
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                            </svg>
-                        </Link>
-                    </div>
+
                 </div>
             </div>
 
@@ -117,19 +110,7 @@ export default function CitizenDashboard() {
                 </Link>
 
                 {/* Placeholder / Profile Card */}
-                <Link href="/citizen/profile" className="group relative bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-xl hover:border-purple-100 transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-                    <div className="relative z-10">
-                        <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-4 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                            <span className="text-2xl">👤</span>
-                        </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">My Profile</h3>
-                        <p className="text-gray-500 text-sm mb-4 line-clamp-2">Update your personal information and contact details.</p>
-                        <div className="flex items-center text-purple-600 font-medium text-sm group-hover:underline">
-                            Edit Profile <span className="ml-1 transition-transform group-hover:translate-x-1">→</span>
-                        </div>
-                    </div>
-                </Link>
+
             </div>
 
             {/* Recent Updates Section - Real Data */}
