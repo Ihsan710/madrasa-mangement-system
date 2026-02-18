@@ -115,7 +115,10 @@ export default function CitizensPage() {
                                                         {citizen.profilePhoto ? (
                                                             <img
                                                                 className="h-12 w-12 rounded-full object-cover border-2 border-white shadow-sm"
-                                                                src={citizen.profilePhoto.startsWith('http') ? citizen.profilePhoto : `http://localhost:5000${citizen.profilePhoto}`}
+                                                                src={citizen.profilePhoto.startsWith('http')
+                                                                    ? citizen.profilePhoto
+                                                                    : `${process.env.NEXT_PUBLIC_API_URL?.replace(/\/api$/, '') || 'http://localhost:5000'}${citizen.profilePhoto}`
+                                                                }
                                                                 alt=""
                                                             />
                                                         ) : (

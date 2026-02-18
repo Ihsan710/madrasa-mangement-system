@@ -47,7 +47,10 @@ export default function CitizenDashboard() {
                         <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white/20 overflow-hidden shadow-2xl">
                             {user?.profilePhoto ? (
                                 <img
-                                    src={user.profilePhoto.startsWith('http') ? user.profilePhoto : `http://localhost:5000${user.profilePhoto}`}
+                                    src={user.profilePhoto.startsWith('http')
+                                        ? user.profilePhoto
+                                        : `${process.env.NEXT_PUBLIC_API_URL?.replace(/\/api$/, '') || 'http://localhost:5000'}${user.profilePhoto}`
+                                    }
                                     alt={user.name}
                                     className="w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
                                 />
