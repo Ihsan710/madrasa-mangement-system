@@ -18,8 +18,6 @@ export default function ProfilePage() {
         bloodGroup: '',
         password: ''
     });
-    const [profilePhoto, setProfilePhoto] = useState<File | null>(null);
-    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
     const [isEditing, setIsEditing] = useState(false);
 
@@ -29,16 +27,6 @@ export default function ProfilePage() {
         totalContributed: 0,
         memberSince: new Date().getFullYear()
     });
-
-    // Helper to construct image URL
-    const getImageUrl = (path: string) => {
-        if (!path) return null;
-        if (path.startsWith('http')) return path;
-
-        // Remove '/api' from the end of NEXT_PUBLIC_API_URL if it exists
-        const baseUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/api$/, '') || 'http://localhost:5000';
-        return `${baseUrl}${path}`;
-    };
 
     useEffect(() => {
         const fetchProfileData = async () => {
@@ -58,10 +46,6 @@ export default function ProfilePage() {
                     bloodGroup: profileData.bloodGroup || '',
                     password: ''
                 });
-
-                if (profileData.profilePhoto) {
-                    setPreviewUrl(getImageUrl(profileData.profilePhoto));
-                }
 
                 // Calculate Stats
                 const totalFees = feeData.reduce((acc: number, record: any) => {
@@ -102,14 +86,6 @@ export default function ProfilePage() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files[0]) {
-            const file = e.target.files[0];
-            setProfilePhoto(file);
-            setPreviewUrl(URL.createObjectURL(file));
-        }
-    };
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
@@ -119,15 +95,8 @@ export default function ProfilePage() {
                     dataToUpdate.append(key, formData[key as keyof typeof formData]);
                 }
             }
-            if (profilePhoto) {
-                dataToUpdate.append('profilePhoto', profilePhoto);
-            }
 
             const updatedUser = await updateProfile(dataToUpdate);
-
-            if (updatedUser.profilePhoto) {
-                setPreviewUrl(getImageUrl(updatedUser.profilePhoto));
-            }
 
             if (user) {
                 const newUserData = { ...user, ...updatedUser };
@@ -136,7 +105,6 @@ export default function ProfilePage() {
 
             toast.success('Profile Updated Successfully');
             setFormData(prev => ({ ...prev, password: '' }));
-            setProfilePhoto(null);
             setIsEditing(false);
         } catch (error: any) {
             toast.error(error.response?.data?.message || 'Failed to update profile');
@@ -167,23 +135,9 @@ export default function ProfilePage() {
                 <div className="px-8 pb-8">
                     <div className="relative flex justify-between items-end -mt-16 mb-6">
                         <div className="relative group">
-                            <div className="h-32 w-32 rounded-full border-4 border-white bg-white overflow-hidden shadow-lg relative z-10">
-                                {previewUrl ? (
-                                    <img src={previewUrl} alt="Profile" className="h-full w-full object-cover" />
-                                ) : (
-                                    <div className="h-full w-full bg-emerald-50 flex items-center justify-center text-emerald-600 text-4xl font-bold">
-                                        {formData.name.charAt(0)}
-                                    </div>
-                                )}
+                            <div className="h-32 w-32 rounded-full border-4 border-white bg-emerald-50 overflow-hidden shadow-lg relative z-10 flex items-center justify-center text-emerald-600 text-4xl font-bold">
+                                {formData.name.charAt(0)}
                             </div>
-                            {isEditing && (
-                                <label className="absolute bottom-0 right-0 z-20 bg-emerald-600 text-white p-2.5 rounded-full cursor-pointer hover:bg-emerald-700 transition shadow-md border-2 border-white">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                                    </svg>
-                                    <input type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
-                                </label>
-                            )}
                         </div>
 
                         <div className="mb-2 hidden sm:block">
