@@ -42,25 +42,7 @@ export default function CitizenDashboard() {
                 <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-64 h-64 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
 
                 <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8">
-                    <div className="relative group">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-200"></div>
-                        <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white/20 overflow-hidden shadow-2xl">
-                            {user?.profilePhoto ? (
-                                <img
-                                    src={user.profilePhoto.startsWith('http')
-                                        ? user.profilePhoto
-                                        : `${process.env.NEXT_PUBLIC_API_URL?.replace(/\/api$/, '') || 'http://localhost:5000'}${user.profilePhoto}`
-                                    }
-                                    alt={user.name}
-                                    className="w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
-                                />
-                            ) : (
-                                <div className="w-full h-full bg-emerald-700 flex items-center justify-center text-3xl font-bold">
-                                    {user?.name?.charAt(0)}
-                                </div>
-                            )}
-                        </div>
-                    </div>
+
 
                     <div className="text-center md:text-left flex-1">
                         <div className="inline-flex items-center px-3 py-1 rounded-full border border-emerald-400/30 bg-emerald-400/10 backdrop-blur-sm text-emerald-200 text-xs font-medium mb-3">
