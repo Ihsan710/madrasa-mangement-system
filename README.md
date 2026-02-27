@@ -6,6 +6,9 @@
 
 A comprehensive, role-based digital solution designed to streamline the administration of Madrasas and Mosques. This system facilitates efficient management of citizen records, family data, monthly fees, and improved communication between the administration and the community.
 
+## 🔗 Live Demo
+Check out the live deployment here: [Madrasa Management System on Vercel](https://madrasa-mangement-system.vercel.app/)
+
 ## ✨ Key Features
 
 ### 🏢 Admin Panel
