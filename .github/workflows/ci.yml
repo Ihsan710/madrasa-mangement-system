@@ -1,0 +1,44 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: 'mosque-backend/package-lock.json'
+
+    - name: Install Backend Dependencies
+      run: npm ci
+      working-directory: ./mosque-backend
+
+    - name: Check Backend Syntax (Dry Run)
+      run: node --check server.js
+      working-directory: ./mosque-backend
+
+    - name: Install Frontend Dependencies
+      run: npm install
+      working-directory: ./mosque-frontend
+
+    - name: Build Frontend
+      run: npm run build
+      working-directory: ./mosque-frontend
+      env:
+        # Provide placeholder env vars so Next.js can build without failing if it expects them
+        NEXT_PUBLIC_API_URL: http://localhost:5000/api
