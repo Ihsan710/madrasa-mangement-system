@@ -16,348 +16,302 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen font-sans bg-[#0B1120] text-slate-200 overflow-x-hidden selection:bg-emerald-500/30">
-
-      {/* GLOBAL BACKGROUND EFFECTS (ORBS) */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-500/20 blur-[120px]"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-teal-600/10 blur-[150px]"></div>
-      </div>
-
-      {/* CUSTOM FLOATING NAVBAR OVERRIDE (For visual impact on landing only, reusing existing Navbar implicitly via layout if needed, but styling locally for the hero) */}
-      <div className="absolute top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl z-50">
-        <Navbar />
-      </div>
+    <div className="min-h-screen font-sans bg-gray-50">
+      <Navbar />
 
       {/* 1. HERO SECTION */}
-      <div className="relative min-h-screen flex items-center justify-center pt-20 pb-16">
-        {/* Subtle Grid Background */}
-        <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      <div className="relative h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/masjid-cover.jpg"
+            alt="Mosque Interior"
+            className="w-full h-full object-cover fixed top-0"
+          />
+          {/* Stronger overlay for the white building */}
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-900/70 via-emerald-900/40 to-gray-900/80 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-black/30"></div>
+        </div>
 
-        <div className="relative z-10 text-center px-4 max-w-6xl mx-auto mt-10 flex flex-col items-center">
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-16">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="flex flex-col items-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            {/* Glowing Pill */}
-            <div className="group hidden sm:flex relative inline-flex h-9 items-center justify-center overflow-hidden rounded-full bg-emerald-950/30 px-6 font-medium text-emerald-300 border border-emerald-500/30 backdrop-blur-xl mb-10 transition-all hover:bg-emerald-900/50 hover:border-emerald-400/50 cursor-default">
-              <span className="relative flex h-2 w-2 mr-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              Digital Madrasa Management Platform
-              <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent"></div>
-            </div>
-
-            {/* Massive Typography */}
-            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black text-white mb-6 leading-[1.1] tracking-tighter drop-shadow-2xl">
-              Faith meets <br className="hidden md:block" />
-              <span className="relative">
-                <span className="absolute -inset-1 blur-2xl opacity-40 bg-gradient-to-r from-emerald-400 to-cyan-500 rounded-lg"></span>
-                <span className="relative text-transparent bg-clip-text bg-gradient-to-b from-white via-emerald-200 to-emerald-600">
-                  Brilliance.
-                </span>
+            <span className="inline-block py-1 px-3 rounded-full bg-emerald-500/20 backdrop-blur-md border border-emerald-400/30 text-emerald-300 text-sm font-semibold tracking-wider mb-6 uppercase">
+              Welcome to Izzathul Islam
+            </span>
+            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight drop-shadow-lg">
+              Faith, Community, <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
+                & Excellence
               </span>
             </h1>
-
-            <p className="text-xl md:text-2xl text-slate-400 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
-              Izzathul Islam is redefining community connection. Experience a seamless, transparent, and highly modern approach to Madrasa administration.
+            <p className="text-xl md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+              Serving the community with dedication, striving for spiritual growth and educational brilliance.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full sm:w-auto">
-              {/* Primary CTA */}
-              <button onClick={() => scrollToSection('login-section')} className="group relative w-full sm:w-auto inline-flex items-center justify-center px-10 py-5 bg-emerald-500 text-slate-950 font-bold text-lg rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(16,185,129,0.8)]" suppressHydrationWarning>
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 transition-all group-hover:scale-110"></div>
-                <span className="relative flex items-center gap-2">
-                  Enter Portal
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </span>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button onClick={() => scrollToSection('about')} className="px-8 py-4 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/20 rounded-full font-semibold transition-all shadow-lg hover:shadow-xl backdrop-blur-sm" suppressHydrationWarning>
+                Learn About Us
               </button>
-
-              {/* Secondary CTA (Glass) */}
-              <button onClick={() => scrollToSection('about')} className="relative w-full sm:w-auto inline-flex items-center justify-center px-10 py-5 bg-slate-900/50 backdrop-blur-md border border-slate-700/50 text-white font-semibold text-lg rounded-2xl transition-all hover:bg-slate-800/80 hover:border-slate-500/50" suppressHydrationWarning>
-                Discover More
+              <button onClick={() => scrollToSection('login-section')} className="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.4)] flex items-center" suppressHydrationWarning>
+                <span>Login Portal</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
               </button>
             </div>
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer z-20 text-slate-500 hover:text-emerald-400 transition-colors"
-          onClick={() => scrollToSection('about')}
-        >
-          <div className="w-8 h-12 rounded-full border-2 border-current flex justify-center p-2">
-            <div className="w-1 h-3 bg-current rounded-full animate-bounce"></div>
-          </div>
-        </motion.div>
+        {/* Scroll Down Indicator */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer z-20" onClick={() => scrollToSection('about')}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white/70 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
       </div>
 
-      {/* 2. ABOUT US SECTION (ASYMMETRIC) */}
-      <section id="about" className="py-32 relative z-10 scroll-mt-20 overflow-hidden">
-        <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-[2px] border-y border-white/5"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Image Block */}
-            <motion.div
-              initial={{ opacity: 0, x: -50, rotate: -2 }}
-              whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, type: "spring", bounce: 0.2 }}
-              className="lg:col-span-7 relative"
-            >
-              <div className="absolute -inset-4 bg-gradient-to-tr from-emerald-500/20 to-teal-500/20 rounded-[2.5rem] blur-xl opacity-50"></div>
-              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 group">
-                <img src="/about-cover.jpg" alt="Community Gathering" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-                <div className="absolute bottom-8 left-8 text-white">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 backdrop-blur-md text-emerald-300 text-xs font-bold tracking-widest uppercase mb-3">
-                    Est. 1995
-                  </div>
-                  <h3 className="text-3xl font-bold">Rooted in Tradition</h3>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Text Overlay Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 50, y: 30 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-5 lg:-ml-20 relative z-20"
-            >
-              <div className="bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 sm:p-12 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]">
-                <span className="text-emerald-400 font-bold tracking-widest text-sm uppercase mb-4 block">Who We Are</span>
-                <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
-                  A Center for <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-emerald-500">Spiritual Growth</span>
-                </h2>
-                <div className="w-16 h-1 bg-emerald-500/50 mb-8 rounded-full"></div>
-
-                <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                  Izzathul Islam is more than just a mosque; it is a highly integrated community hub. We foster powerful brotherly bonds, unmatched educational excellence, and vital charitable initiatives.
-                </p>
-                <p className="text-slate-400 text-base leading-relaxed mb-8">
-                  From religious up-bringing in our state-of-the-art Madrasa to financial and social welfare programs, we exist to uplift every individual.
-                </p>
-
-                <Link href="/about" className="group inline-flex items-center justify-center p-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold transition-all hover:shadow-[0_0_20px_-5px_rgba(16,185,129,0.5)]">
-                  <span className="bg-slate-900 hover:bg-transparent px-6 py-3 rounded-full transition-colors flex items-center">
-                    Read Our Story
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </span>
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. MADRASA SECTION (BENTO GRID) */}
-      <section id="madrasa" className="py-32 relative z-10 scroll-mt-20">
+      {/* 2. ABOUT US SECTION */}
+      <section id="about" className="py-24 bg-white relative z-10 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">The Curriculum</h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light">Nurturing the next generation with deep knowledge and unbreakable character.</p>
+            <span className="text-emerald-600 font-semibold tracking-wide uppercase">Who We Are</span>
+            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mt-2">About Our Community</h2>
+            <div className="w-24 h-1 bg-emerald-500 mx-auto mt-6 rounded-full"></div>
           </motion.div>
 
-          {/* BENTO GRID LAYOUT */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[250px]">
-
-            {/* Bento Card 1 - Large */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="md:col-span-2 md:row-span-2 relative rounded-3xl overflow-hidden group border border-white/10 bg-slate-900/40 backdrop-blur-sm p-8 flex flex-col justify-end"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative h-96 rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/10 to-transparent group-hover:opacity-100 opacity-50 transition-opacity"></div>
-              <div className="absolute top-8 right-8 w-16 h-16 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">📚</div>
-              <div className="relative z-10 mt-auto">
-                <span className="text-emerald-400 text-sm font-bold uppercase tracking-wider mb-2 block">Core</span>
-                <h3 className="text-3xl font-bold text-white mb-4">Quranic Studies</h3>
-                <p className="text-slate-300 text-lg leading-relaxed max-w-md">Comprehensive Hifz (memorization) and Tajweed (elocution) programs meticulously designed for students of all ages to connect with the divine word.</p>
+              <img src="/about-cover.jpg" alt="Community Gathering" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/60 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-white">
+                <p className="font-bold text-xl">Establishment</p>
+                <p className="text-sm">SERVING SINCE 1995</p>
               </div>
             </motion.div>
-
-            {/* Bento Card 2 - Top Right */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="md:col-span-2 relative rounded-3xl overflow-hidden group border border-white/10 bg-slate-900/40 backdrop-blur-sm p-8"
+              transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 blur-2xl rounded-full"></div>
-              <div className="w-12 h-12 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center text-xl mb-6 group-hover:-translate-y-2 transition-transform">🕌</div>
-              <h3 className="text-2xl font-bold text-white mb-2">Islamic Jurisprudence</h3>
-              <p className="text-slate-400">Deep dives into Fiqh and Hadith. Understand the practical, day-to-day applications of faith in the modern world.</p>
-            </motion.div>
-
-            {/* Bento Card 3 - Bottom Right */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="md:col-span-2 relative rounded-3xl overflow-hidden group border border-emerald-500/20 bg-emerald-950/20 backdrop-blur-sm p-8"
-            >
-              <div className="w-12 h-12 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mb-6 group-hover:-translate-y-2 transition-transform">🎓</div>
-              <h3 className="text-2xl font-bold text-white mb-2">Moral Education</h3>
-              <p className="text-emerald-100/70">Focusing heavily on Tarbiyah (upbringing). We exist to mold characters rooted in unshakeable integrity, empathy, and compassion.</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">A Center for Spiritual & Social Growth</h3>
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                Izzathul Islam is more than just a mosque; it is a vibrant community hub dedicated to fostering brotherly bonds, educational excellence, and charitable initiatives.
+              </p>
+              <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                Our mission is to provide comprehensive support to our members, ranging from religious education in our Madrasa to social welfare programs for families in need.
+              </p>
+              <Link href="/about" className="inline-flex items-center text-emerald-600 font-bold hover:text-emerald-800 transition-colors group">
+                Read Full History
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+              </Link>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 4. LOGIN SECTION AREA (SLEEK SaaS STYLE) */}
-      <div id="login-section" className="relative z-10 py-32 scroll-mt-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/80 to-transparent"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-
+      {/* 3. MADRASA SECTION */}
+      <section id="madrasa" className="py-24 bg-gray-50 relative z-10 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-16"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Access Your Dashboard</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-              Secure, role-based entry to the management infrastructure.
-            </p>
+            <span className="text-emerald-600 font-semibold tracking-wide uppercase">Our Education</span>
+            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mt-2">The Madrasa</h2>
+            <p className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">Nurturing the next generation with knowledge and character.</p>
           </motion.div>
 
-          <div className="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
-
-            {/* Citizen Login Card */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              className="flex-1 bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-10 flex flex-col items-center text-center transition-all hover:border-emerald-500/50 hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.2)] group"
-            >
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 flex items-center justify-center text-4xl mb-8 group-hover:scale-110 transition-transform">
-                👥
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-3">Citizen Portal</h3>
-              <p className="text-slate-400 mb-10 flex-grow">Access personal family records, view transparent fee status, and update your profile instantly.</p>
-              <Link href="/login" className="w-full py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-xl font-bold transition-colors">
-                Citizen Sign In
-              </Link>
-            </motion.div>
-
-            {/* Admin Access Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              className="flex-1 bg-gradient-to-b from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-600/50 rounded-3xl p-10 flex flex-col items-center text-center transition-all hover:border-blue-400/50 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.2)] group relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl"></div>
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border border-blue-500/30 flex items-center justify-center text-4xl mb-8 group-hover:scale-110 transition-transform">
-                🛡️
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-3">Admin Infrastructure</h3>
-              <p className="text-slate-400 mb-10 flex-grow">Full system oversight. Manage directory, process fees, and view real-time organizational analytics.</p>
-              <Link href="/login" className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold transition-all shadow-[0_0_20px_-5px_rgba(37,99,235,0.5)]">
-                Admin Authentication
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-
-      {/* 5. MINIMALIST CONTACT SECTION */}
-      <section id="contact" className="py-24 relative z-10 scroll-mt-20 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Card 1 */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="space-y-8"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-emerald-500"
             >
-              <div>
-                <h2 className="text-4xl font-bold text-white mb-4">Connect With Us</h2>
-                <p className="text-slate-400 text-lg">We welcome everyone to join our prayers and participate in our community events.</p>
-              </div>
+              <div className="w-14 h-14 bg-emerald-100 rounded-lg flex items-center justify-center text-3xl mb-6">📚</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Quranic Studies</h3>
+              <p className="text-gray-600">Comprehensive Hifz and Tajweed programs designed for students of all ages.</p>
+            </motion.div>
+            {/* Card 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-teal-500"
+            >
+              <div className="w-14 h-14 bg-teal-100 rounded-lg flex items-center justify-center text-3xl mb-6">🕌</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Islamic Jurisprudence</h3>
+              <p className="text-gray-600">Deep dives into Fiqh and Hadith to understand the practical applications of faith.</p>
+            </motion.div>
+            {/* Card 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-emerald-500"
+            >
+              <div className="w-14 h-14 bg-emerald-100 rounded-lg flex items-center justify-center text-3xl mb-6">🎓</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Moral Education</h3>
+              <p className="text-gray-600">Focusing on Tarbiyah (upbringing) to mold characters rooted in integrity and compassion.</p>
+            </motion.div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/madrasa" className="inline-block px-8 py-3 border-2 border-emerald-600 text-emerald-600 font-bold rounded-full hover:bg-emerald-600 hover:text-white transition-all">
+              Explore Curriculum
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. CONTACT SECTION */}
+      <section id="contact" className="py-24 bg-emerald-900 text-white relative z-10 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-emerald-300 font-semibold tracking-wide uppercase">Get in Touch</span>
+              <h2 className="text-3xl font-bold mt-2 mb-6">Visit Us Today</h2>
+              <p className="text-emerald-100 text-lg mb-8">
+                We welcome everyone to join our prayers and participate in our community events.
+              </p>
 
               <div className="space-y-6">
-                {[
-                  { icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z", icon2: "M15 11a3 3 0 11-6 0 3 3 0 016 0z", title: "HQ Address", desc: "CWH6+GFC, Koyilandy - Edavanna Rd, Kerala" },
-                  { icon: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z", title: "Direct Line", desc: "+91 98478 81554" },
-                  { icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", title: "Electronic Mail", desc: "contact@izzathulislam.org" }
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center group">
-                    <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-emerald-400 mr-6 group-hover:bg-emerald-500/20 transition-colors">
-                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                        {item.icon2 && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon2} />}
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white text-sm uppercase tracking-wider">{item.title}</h4>
-                      <p className="text-slate-400">{item.desc}</p>
-                    </div>
+                <div className="flex items-start">
+                  <svg className="h-6 w-6 text-emerald-400 mt-1 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <div>
+                    <h4 className="font-bold text-lg">Address</h4>
+                    <p className="text-emerald-200">CWH6+GFC, Koyilandy - Edavanna Rd, Kedavur, Kerala 673573</p>
                   </div>
-                ))}
+                </div>
+                <div className="flex items-start">
+                  <svg className="h-6 w-6 text-emerald-400 mt-1 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <div>
+                    <h4 className="font-bold text-lg">Phone</h4>
+                    <p className="text-emerald-200">+91 98478 81554</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <svg className="h-6 w-6 text-emerald-400 mt-1 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <div>
+                    <h4 className="font-bold text-lg">Email</h4>
+                    <p className="text-emerald-200">contact@izzathulislam.org</p>
+                  </div>
+                </div>
               </div>
             </motion.div>
 
-            {/* Glass Form */}
+            {/* Map Placeholder or Form */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="bg-slate-900/40 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 relative overflow-hidden"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-emerald-800 rounded-2xl p-8 shadow-inner"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-3xl pointer-events-none"></div>
-              <h3 className="text-2xl font-bold mb-6 text-white relative z-10">Send a Dispatch</h3>
-              <form className="space-y-5 relative z-10">
-                <input type="text" placeholder="Full Identity" className="w-full px-5 py-4 rounded-xl bg-black/20 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all font-light" />
-                <input type="email" placeholder="Email Address" className="w-full px-5 py-4 rounded-xl bg-black/20 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all font-light" />
-                <textarea rows={4} placeholder="Your Message" className="w-full px-5 py-4 rounded-xl bg-black/20 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all font-light resize-none"></textarea>
-                <button className="w-full py-4 bg-emerald-500/90 hover:bg-emerald-400 text-slate-950 font-bold rounded-xl transition-colors shadow-lg">Transmit</button>
+              <h3 className="text-xl font-bold mb-4">Send us a Message</h3>
+              <form className="space-y-4">
+                <input type="text" placeholder="Your Name" className="w-full px-4 py-3 rounded-lg bg-emerald-900 border border-emerald-700 text-white placeholder-emerald-500 focus:outline-none focus:border-emerald-400" />
+                <input type="email" placeholder="Your Email" className="w-full px-4 py-3 rounded-lg bg-emerald-900 border border-emerald-700 text-white placeholder-emerald-500 focus:outline-none focus:border-emerald-400" />
+                <textarea rows={3} placeholder="Message" className="w-full px-4 py-3 rounded-lg bg-emerald-900 border border-emerald-700 text-white placeholder-emerald-500 focus:outline-none focus:border-emerald-400"></textarea>
+                <button className="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-bold rounded-lg transition-colors">Send Message</button>
               </form>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="relative z-10 border-t border-white/5 bg-[#070b14] text-slate-400 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-sm">
-          <div className="mb-6 md:mb-0 flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-slate-950 font-bold">II</div>
-            <span className="text-xl font-bold text-white tracking-tight">Izzathul Islam</span>
+      {/* 5. LOGIN SECTION AREA */}
+      <div id="login-section" className="relative z-10 bg-white py-24 scroll-mt-20 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-3xl mx-auto">
+            <span className="text-emerald-600 font-semibold tracking-wide uppercase">Member Access</span>
+            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mt-2 mb-8">Login to Portal</h2>
+            <p className="text-gray-500 mb-12">
+              Access exclusive features for registered citizens and administrative staff. Manage fees, view family records, and stay updated.
+            </p>
           </div>
-          <div className="flex space-x-8 font-medium">
-            <button onClick={() => scrollToSection('about')} className="hover:text-emerald-400 transition-colors">About</button>
-            <button onClick={() => scrollToSection('madrasa')} className="hover:text-emerald-400 transition-colors">Curriculum</button>
-            <button onClick={() => scrollToSection('contact')} className="hover:text-emerald-400 transition-colors">Contact</button>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Citizen Login Card */}
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="bg-gray-50 rounded-3xl shadow-lg border border-gray-200 p-8 flex flex-col items-center text-center transition-all hover:shadow-2xl hover:border-emerald-300 group"
+            >
+              <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform">
+                👥
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Citizen Login</h3>
+              <p className="text-gray-500 mb-8">For community members to check status and payments.</p>
+              <Link href="/login" className="w-full py-4 bg-emerald-600 text-white rounded-xl font-bold text-lg hover:bg-emerald-700 transition-colors shadow-lg shadow-emerald-200 flex justify-center items-center">
+                Login as Citizen <span className="ml-2">→</span>
+              </Link>
+            </motion.div>
+
+            {/* Admin Access Card */}
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="bg-gray-50 rounded-3xl shadow-lg border border-gray-200 p-8 flex flex-col items-center text-center transition-all hover:shadow-2xl hover:border-blue-300 group"
+            >
+              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform">
+                🛡️
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Admin Access</h3>
+              <p className="text-gray-500 mb-8">For verified administrators to manage the system.</p>
+              <Link href="/login" className="w-full py-4 bg-white text-gray-900 border-2 border-gray-300 rounded-xl font-bold text-lg hover:border-gray-900 hover:bg-gray-100 transition-all flex justify-center items-center">
+                Admin Login <span className="ml-2">→</span>
+              </Link>
+            </motion.div>
           </div>
-          <div className="mt-6 md:mt-0 text-slate-500 font-light hidden lg:block">
-            © 2026 Architectural Code. All systems nominal.
+        </div>
+      </div>
+
+      <footer className="relative z-10 bg-gray-900 border-t border-gray-800 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-4 md:mb-0 text-center md:text-left">
+            <span className="text-2xl font-bold text-emerald-500">Izzathul Islam</span>
+            <p className="text-gray-400 text-sm mt-1">© 2026 All rights reserved.</p>
+          </div>
+          <div className="flex space-x-8">
+            <button onClick={() => scrollToSection('about')} className="text-gray-400 hover:text-white transition-colors">About</button>
+            <button onClick={() => scrollToSection('madrasa')} className="text-gray-400 hover:text-white transition-colors">Madrasa</button>
+            <button onClick={() => scrollToSection('contact')} className="text-gray-400 hover:text-white transition-colors">Contact</button>
           </div>
         </div>
       </footer>
