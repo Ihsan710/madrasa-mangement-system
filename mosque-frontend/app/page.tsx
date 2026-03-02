@@ -76,22 +76,39 @@ export default function Home() {
       {/* 2. ABOUT US SECTION */}
       <section id="about" className="py-24 bg-white relative z-10 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
             <span className="text-emerald-600 font-semibold tracking-wide uppercase">Who We Are</span>
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mt-2">About Our Community</h2>
             <div className="w-24 h-1 bg-emerald-500 mx-auto mt-6 rounded-full"></div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative h-96 rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500"
+            >
               <img src="/about-cover.jpg" alt="Community Gathering" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/60 to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-white">
                 <p className="font-bold text-xl">Establishment</p>
                 <p className="text-sm">SERVING SINCE 1995</p>
               </div>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">A Center for Spiritual & Social Growth</h3>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
                 Izzathul Islam is more than just a mosque; it is a vibrant community hub dedicated to fostering brotherly bonds, educational excellence, and charitable initiatives.
@@ -105,7 +122,7 @@ export default function Home() {
                   <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                 </svg>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -113,31 +130,55 @@ export default function Home() {
       {/* 3. MADRASA SECTION */}
       <section id="madrasa" className="py-24 bg-gray-50 relative z-10 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
             <span className="text-emerald-600 font-semibold tracking-wide uppercase">Our Education</span>
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mt-2">The Madrasa</h2>
             <p className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">Nurturing the next generation with knowledge and character.</p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-emerald-500">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-emerald-500"
+            >
               <div className="w-14 h-14 bg-emerald-100 rounded-lg flex items-center justify-center text-3xl mb-6">📚</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Quranic Studies</h3>
               <p className="text-gray-600">Comprehensive Hifz and Tajweed programs designed for students of all ages.</p>
-            </div>
+            </motion.div>
             {/* Card 2 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-teal-500">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-teal-500"
+            >
               <div className="w-14 h-14 bg-teal-100 rounded-lg flex items-center justify-center text-3xl mb-6">🕌</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Islamic Jurisprudence</h3>
               <p className="text-gray-600">Deep dives into Fiqh and Hadith to understand the practical applications of faith.</p>
-            </div>
+            </motion.div>
             {/* Card 3 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-emerald-500">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-emerald-500"
+            >
               <div className="w-14 h-14 bg-emerald-100 rounded-lg flex items-center justify-center text-3xl mb-6">🎓</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Moral Education</h3>
               <p className="text-gray-600">Focusing on Tarbiyah (upbringing) to mold characters rooted in integrity and compassion.</p>
-            </div>
+            </motion.div>
           </div>
 
           <div className="text-center mt-12">
@@ -152,7 +193,12 @@ export default function Home() {
       <section id="contact" className="py-24 bg-emerald-900 text-white relative z-10 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
               <span className="text-emerald-300 font-semibold tracking-wide uppercase">Get in Touch</span>
               <h2 className="text-3xl font-bold mt-2 mb-6">Visit Us Today</h2>
               <p className="text-emerald-100 text-lg mb-8">
@@ -189,10 +235,16 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Map Placeholder or Form */}
-            <div className="bg-emerald-800 rounded-2xl p-8 shadow-inner">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-emerald-800 rounded-2xl p-8 shadow-inner"
+            >
               <h3 className="text-xl font-bold mb-4">Send us a Message</h3>
               <form className="space-y-4">
                 <input type="text" placeholder="Your Name" className="w-full px-4 py-3 rounded-lg bg-emerald-900 border border-emerald-700 text-white placeholder-emerald-500 focus:outline-none focus:border-emerald-400" />
@@ -200,7 +252,7 @@ export default function Home() {
                 <textarea rows={3} placeholder="Message" className="w-full px-4 py-3 rounded-lg bg-emerald-900 border border-emerald-700 text-white placeholder-emerald-500 focus:outline-none focus:border-emerald-400"></textarea>
                 <button className="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-bold rounded-lg transition-colors">Send Message</button>
               </form>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
