@@ -2,6 +2,14 @@
   "name": "mosque-backend",
   "version": "1.0.0",
   "description": "Backend for Mosque Management System",
+  "keywords": [
+    "madrasa",
+    "mosque",
+    "management",
+    "api",
+    "express",
+    "mongodb"
+  ],
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
