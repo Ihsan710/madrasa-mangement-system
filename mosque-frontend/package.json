@@ -1,6 +1,13 @@
 {
   "name": "mosque-frontend",
   "version": "0.1.0",
+  "keywords": [
+    "madrasa",
+    "mosque",
+    "management",
+    "nextjs",
+    "react"
+  ],
   "private": true,
   "scripts": {
     "dev": "next dev",
