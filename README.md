@@ -105,15 +105,7 @@ npm run dev
 
 ---
 
-## 📸 Screenshots
 
-| Admin Dashboard | Citizen Portal |
-|:---:|:---:|
-| *(Add screenshots here)* | *(Add screenshots here)* |
-
-| Landing Page | Mobile View |
-|:---:|:---:|
-| *(Add screenshots here)* | *(Add screenshots here)* |
 
 ---
 
