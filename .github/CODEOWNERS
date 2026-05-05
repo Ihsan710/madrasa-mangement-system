@@ -1,0 +1,10 @@
+# These owners will be the default reviewers for pull requests in the repository.
+
+# Global owners
+*       @Ihsan710
+
+# Backend specific
+/mosque-backend/    @Ihsan710
+
+# Frontend specific
+/mosque-frontend/   @Ihsan710
