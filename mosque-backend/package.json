@@ -1,6 +1,7 @@
 {
   "name": "mosque-backend",
   "version": "1.0.0",
+  "author": "Ihsan710",
   "description": "Backend for Mosque Management System",
   "keywords": [
     "madrasa",
