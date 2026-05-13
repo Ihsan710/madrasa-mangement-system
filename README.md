@@ -113,6 +113,10 @@ npm run dev
 
 Contributions are welcome! Please fork the repository and submit a pull request for any improvements.
 
+## ✍️ Project Maintainers
+
+- **Ihsan710** - [GitHub Profile](https://github.com/Ihsan710)
+
 ## 📄 License
 
 This project is open-source and available under the [MIT License](LICENSE).
